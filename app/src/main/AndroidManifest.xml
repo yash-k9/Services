@@ -27,6 +27,10 @@
         <service android:name=".services.ForegroundService" />
         <service android:name=".services.BackgroundService" />
         <service android:name=".services.BoundService" />
+        <receiver android:name=".services.AlarmService"/>
+        <service android:name=".services.MyJobScheduler"
+            android:permission="android.permission.BIND_JOB_SERVICE"/>
+
     </application>
 
 </manifest>

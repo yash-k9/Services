@@ -13,7 +13,6 @@
         android:text="@string/start_background_service"
         app:layout_constraintBottom_toTopOf="@+id/foreground_service"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.4"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,8 +22,8 @@
         android:id="@+id/foreground_service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/start_foreground_service"
         android:layout_marginTop="24dp"
+        android:text="@string/start_foreground_service"
         app:layout_constraintBottom_toTopOf="@+id/bound_service"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -37,10 +36,33 @@
         android:layout_height="wrap_content"
         android:text="@string/start_bound_service"
         android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/job_scheduler"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foreground_service" />
+
+    <Button
+        android:id="@+id/job_scheduler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/start_job_scheduler"
+        app:layout_constraintBottom_toTopOf="@+id/alarm_manager"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bound_service" />
+
+    <Button
+        android:id="@+id/alarm_manager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/start_alarm_manager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foreground_service" />
+        app:layout_constraintTop_toBottomOf="@+id/job_scheduler" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
