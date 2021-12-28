@@ -1,5 +1,6 @@
 package com.yashk9.service
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,8 @@ import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.content.ComponentName
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import com.yashk9.service.services.AlarmService
 import com.yashk9.service.services.MyJobScheduler
 import java.util.*
@@ -64,13 +67,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Fires Alarm in 1min
+
+    @SuppressLint("UnspecifiedImmutableFlag")
     private fun startAlarmManager() {
         Log.d(TAG, "startAlarmManager: Starting Alarm Manager...")
-        val alarmManager = this.getSystemService(ALARM_SERVICE) as AlarmManager
+        val alarmManager = this.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(this, AlarmService::class.java).apply {
             putExtra("id", 123)
         }
-        val pendingIntent = PendingIntent.getBroadcast(this, 123,  intent, PendingIntent.FLAG_NO_CREATE)
+        val pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getBroadcast(this, 123,  intent, PendingIntent.FLAG_MUTABLE)
+        } else {
+            PendingIntent.getBroadcast(this, 123,  intent, PendingIntent.FLAG_NO_CREATE)
+        }
         alarmManager.set(
             AlarmManager.RTC_WAKEUP,
             System.currentTimeMillis()+10000,

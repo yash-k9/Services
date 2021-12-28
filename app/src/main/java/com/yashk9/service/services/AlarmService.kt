@@ -27,9 +27,6 @@ class AlarmService: BroadcastReceiver() {
             if (context != null) {
                 createNotification(context)
             }
-            val pendingIntent = PendingIntent.getBroadcast(context, id, Intent(context, AlarmService::class.java), 0)
-            val alarmManager = context?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            alarmManager.cancel(pendingIntent)
         }
     }
 
